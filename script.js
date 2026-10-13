@@ -29,18 +29,20 @@ document.addEventListener("DOMContentLoaded", function() {
   document.body.insertBefore(nav, document.body.firstChild);
 
   // 5. Find the name of the current HTML file
-  const currentPage = window.location.pathname.split("/").pop();
+  let currentPage = window.location.pathname.split("/").pop();
 
-  // 6. Get all the links in the navigation menu
+  // 6. If the site loads at the home page, select index.html
+  if (currentPage === "" || currentPage === "index.html") {
+    currentPage = "index.html";
+  }
+
+  // 7. Find all navigation links
   const links = nav.querySelectorAll("a");
 
-  // 7. Check each link to see if it matches the current page
+  // Check each link to see if it matches the current page
   for (let i = 0; i < links.length; i++) {
-
-    // Get the link's destination file name
     const linkPage = links[i].getAttribute("href");
 
-    // Highlight the link if it matches the current page
     if (linkPage === currentPage) {
       links[i].classList.add("active");
     }
