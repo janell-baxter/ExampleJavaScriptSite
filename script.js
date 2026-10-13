@@ -1,28 +1,49 @@
-// add comments to descript what this script does
-document.addEventListener("DOMContentLoaded", () => {
-  // pages as an array
+document.addEventListener("DOMContentLoaded", function() {
+
+  // 1. Create a list of pages for the navigation menu
   const pages = [
-    { name: "Home", file: "index.html", id: "home" },
+    { name: "Home", file: "index.html", id: "index" },
     { name: "About", file: "about.htm", id: "about" },
     { name: "Examples", file: "examples.htm", id: "examples" }
   ];
 
-  // navigation section
+  // 2. Create a navigation section
   const nav = document.createElement("nav");
-  nav.innerHTML = pages
-    .map(page => `<a href="${page.file}" data-page="${page.id}">${page.name}</a>`)
-    .join("");
 
-// add navigation to html file
+  // 3. Create a link for each page
+  for (let i = 0; i < pages.length; i++) {
+    const link = document.createElement("a");
+
+    // Set the link text and destination
+    link.textContent = pages[i].name;
+    link.href = pages[i].file;
+
+    // Give the link an ID to identify the page
+    link.dataset.page = pages[i].id;
+
+    // Add the link to the navigation menu
+    nav.appendChild(link);
+  }
+
+  // 4. Add the navigation menu to the top of the page
   document.body.insertBefore(nav, document.body.firstChild);
 
-  // active link should look different - determine active page and add "active" class to the link
-  const currentPage = window.location.pathname.split("/").pop().split(".")[0];
+  // 5. Find the name of the current HTML file
+  const currentPage = window.location.pathname.split("/").pop();
+
+  // 6. Get all the links in the navigation menu
   const links = nav.querySelectorAll("a");
 
-  links.forEach(link => {
-    if (link.dataset.page === currentPage) {
-      link.classList.add("active");
+  // 7. Check each link to see if it matches the current page
+  for (let i = 0; i < links.length; i++) {
+
+    // Get the link's destination file name
+    const linkPage = links[i].getAttribute("href");
+
+    // Highlight the link if it matches the current page
+    if (linkPage === currentPage) {
+      links[i].classList.add("active");
     }
-  });
+  }
+
 });
