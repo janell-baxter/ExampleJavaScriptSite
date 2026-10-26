@@ -48,7 +48,6 @@ nav a {
   padding: 10px 20px;
   border-radius: 5px;
   font-size: 16px;
-
 }
 
 nav a:hover {
@@ -60,6 +59,6 @@ nav a.active {
 }
 
 section {
-width: 500px;
+max-width: 500px;
   text-align: left;
 }
