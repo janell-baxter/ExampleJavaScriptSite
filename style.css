@@ -12,9 +12,6 @@ additional comments
 body {
   font-family: Arial, sans-serif;
   background-color: #f3f3f3;
-  text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
 /*==========content============== */
@@ -59,9 +56,7 @@ nav a.active {
 }
 
 main {
-  display: flex;
-  justify-content: center; 
-  width: 100%;
+
 }
 
 p {
