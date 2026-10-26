@@ -59,6 +59,7 @@ nav a.active {
 }
 
 main p {
+  margin: 0;
 max-width: 500px;
   text-align: left;
 }
